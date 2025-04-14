@@ -1,0 +1,10 @@
+.link {
+  font-size: 20px;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-duration);
+
+  &:hover,
+  &:focus-visible {
+    border-bottom: 2px solid var(--color-light);
+  }
+}
