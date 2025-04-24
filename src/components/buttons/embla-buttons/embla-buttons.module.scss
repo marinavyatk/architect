@@ -1,0 +1,22 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  color: var(--color-light);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:focus-visible {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled {
+    visibility: hidden;
+  }
+}

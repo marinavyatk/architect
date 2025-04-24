@@ -1,0 +1,48 @@
+.main {
+  min-height: 100vh;
+
+  img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  :global(.is-in-view) img {
+    animation: zoom-in 9s linear forwards infinite alternate;
+  }
+}
+
+.slideContainer {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+
+.prevBtn {
+  left: 20px;
+}
+
+.nextBtn {
+  right: 20px;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
