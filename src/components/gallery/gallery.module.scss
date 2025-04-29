@@ -1,0 +1,27 @@
+.gallery {
+  img {
+    filter: grayscale(100%);
+    transition: filter var(--transition-duration);
+  }
+
+  img:hover {
+    filter: grayscale(0);
+
+    & + .title {
+      opacity: 1;
+    }
+  }
+}
+
+.title {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--transition-duration);
+}
