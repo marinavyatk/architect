@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ColumnsPhotoAlbum, Photo } from "react-photo-album";
-import "react-photo-album/columns.css";
+import { memo, useEffect, useState } from "react";
+import { MasonryPhotoAlbum, Photo } from "react-photo-album";
 import s from "./gallery.module.scss";
+import "react-photo-album/masonry.css";
 
-const imageSources = [
+export const imageSources = [
   {
     src: "/carousel/carousel-1.jpg",
     title: "1111",
@@ -56,7 +56,11 @@ const imageSources = [
   },
 ];
 
-export const Gallery = () => {
+type GalleryProps = {
+  onImgClick: (photo: Photo) => void;
+};
+export const Gallery = memo((props: GalleryProps) => {
+  const { onImgClick } = props;
   const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
@@ -85,7 +89,7 @@ export const Gallery = () => {
 
   return (
     <div className={s.gallery}>
-      <ColumnsPhotoAlbum
+      <MasonryPhotoAlbum
         photos={photos}
         spacing={2}
         columns={(containerWidth) => {
@@ -98,7 +102,10 @@ export const Gallery = () => {
             <span className={s.title}>{imageSources[index].title}</span>
           ),
         }}
+        onClick={({ photo }) => {
+          onImgClick(photo);
+        }}
       />
     </div>
   );
-};
+});

@@ -13,7 +13,7 @@ import {
   customSwipe,
   useKeyboardControl,
   usePrevNextButtons,
-} from "@/screens/main-screen/embla-helper";
+} from "@/common/embla-helper";
 import s from "./main-screen.module.scss";
 
 const images = [

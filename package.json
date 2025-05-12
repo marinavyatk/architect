@@ -27,6 +27,7 @@
     "@types/react-dom": "^18.3.6",
     "eslint": "^9",
     "eslint-config-next": "15",
+    "prettier": "3.5.3",
     "sass": "^1.86.3",
     "typescript": "^5"
   }

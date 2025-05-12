@@ -67,11 +67,13 @@ type UsePrevNextButtonsType = {
   nextBtnDisabled: boolean;
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
+  autoplay?: boolean;
 };
 
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined,
   onButtonClick?: (emblaApi: EmblaCarouselType) => void,
+  autoplay: boolean = true,
 ): UsePrevNextButtonsType => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
@@ -79,14 +81,14 @@ export const usePrevNextButtons = (
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
     emblaApi.scrollPrev();
-    restartAutoplay(emblaApi);
+    autoplay && restartAutoplay(emblaApi);
     if (onButtonClick) onButtonClick(emblaApi);
   }, [emblaApi, onButtonClick]);
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
     emblaApi.scrollNext();
-    restartAutoplay(emblaApi);
+    autoplay && restartAutoplay(emblaApi);
     if (onButtonClick) onButtonClick(emblaApi);
   }, [emblaApi, onButtonClick]);
 
@@ -113,6 +115,7 @@ export const usePrevNextButtons = (
 export const useKeyboardControl = (
   emblaApi: EmblaCarouselType | undefined,
   inView: boolean,
+  autoplay: boolean = true,
 ) => {
   useEffect(() => {
     if (!emblaApi || !inView) return;
@@ -120,11 +123,11 @@ export const useKeyboardControl = (
     const changeSlide = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
         emblaApi.scrollPrev();
-        restartAutoplay(emblaApi);
+        autoplay && restartAutoplay(emblaApi);
       }
       if (event.key === "ArrowRight") {
         emblaApi.scrollNext();
-        restartAutoplay(emblaApi);
+        autoplay && restartAutoplay(emblaApi);
       }
     };
 

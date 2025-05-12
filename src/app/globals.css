@@ -1,6 +1,9 @@
 :root {
   --color-dark: #202020;
   --color-light: #ffffff;
+  --color-hover: #e3ba7a;
+  --color-active: #b88c44;
+  --color-overlay: rgba(0, 0, 0, 0.7);
   --transition-duration: 0.3s;
 }
 

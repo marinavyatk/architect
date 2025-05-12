@@ -4,7 +4,8 @@
     transition: filter var(--transition-duration);
   }
 
-  img:hover {
+  img:hover,
+  button:focus-visible img {
     filter: grayscale(0);
 
     & + .title {
